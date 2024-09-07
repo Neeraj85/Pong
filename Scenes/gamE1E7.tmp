@@ -1,0 +1,165 @@
+[gd_scene load_steps=16 format=3 uid="uid://dnbmuonpwu0vx"]
+
+[ext_resource type="Texture2D" uid="uid://c4yr0bnwnsud6" path="res://arts/Board.png" id="1_g585s"]
+[ext_resource type="Script" path="res://Scenes/game.gd" id="1_rwtra"]
+[ext_resource type="Texture2D" uid="uid://dj4xc4cfru1jb" path="res://arts/ScoreBar.png" id="2_1auwg"]
+[ext_resource type="Script" path="res://Scenes/Player.gd" id="3_cmnnu"]
+[ext_resource type="Texture2D" uid="uid://cf7mdl3lohnlw" path="res://arts/Player.png" id="3_rv58r"]
+[ext_resource type="Texture2D" uid="uid://cp1y7wbsofji6" path="res://arts/Computer.png" id="5_a3dq7"]
+[ext_resource type="Script" path="res://Scenes/Computer.gd" id="6_btv6u"]
+[ext_resource type="Texture2D" uid="uid://5qm1dmv4fhvl" path="res://arts/Ball.png" id="8_1o37q"]
+[ext_resource type="Script" path="res://Scenes/CharacterBody2D.gd" id="12_pgqfk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_siptv"]
+size = Vector2(20, 118)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_roym5"]
+radius = 17.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5the2"]
+size = Vector2(20, 119)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_16ddj"]
+a = Vector2(1920, 0)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xxwqg"]
+a = Vector2(1920, 0)
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7wbel"]
+b = Vector2(0, 1032)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_rwtra")
+
+[node name="Board" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1922.0
+offset_bottom = 1078.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_g585s")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HFlowContainer" type="HFlowContainer" parent="HUD"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 51.0
+grow_horizontal = 2
+
+[node name="Left Score Container" type="HBoxContainer" parent="HUD/HFlowContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Left Score" type="TextureRect" parent="HUD/HFlowContainer/Left Score Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_1auwg")
+
+[node name="Label" type="Label" parent="HUD/HFlowContainer/Left Score Container/Left Score"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -11.5
+offset_right = 68.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Player One Score:"
+
+[node name="Right Score Container" type="HBoxContainer" parent="HUD/HFlowContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Right Score" type="TextureRect" parent="HUD/HFlowContainer/Right Score Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("2_1auwg")
+flip_h = true
+
+[node name="Label" type="Label" parent="HUD/HFlowContainer/Right Score Container/Right Score"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -68.0
+offset_top = -11.5
+offset_right = 68.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "Player Two Score:"
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(50, 520)
+script = ExtResource("3_cmnnu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_rv58r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_siptv")
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+position = Vector2(960, 588)
+script = ExtResource("12_pgqfk")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture = ExtResource("8_1o37q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_roym5")
+
+[node name="Computer" type="CharacterBody2D" parent="."]
+position = Vector2(1870, 520)
+script = ExtResource("6_btv6u")
+
+[node name="Sprite2D" type="Sprite2D" parent="Computer"]
+texture = ExtResource("5_a3dq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Computer"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_5the2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 48)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_16ddj")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(0, 1080)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("SegmentShape2D_xxwqg")
+
+[node name="Left Border" type="Area2D" parent="."]
+position = Vector2(0, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Border"]
+shape = SubResource("SegmentShape2D_7wbel")
+
+[node name="Right Border" type="Area2D" parent="."]
+position = Vector2(1920, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Border"]
+shape = SubResource("SegmentShape2D_7wbel")

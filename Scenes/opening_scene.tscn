@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxks2e3cnvqj2"]
+
+[ext_resource type="Texture2D" uid="uid://c4yr0bnwnsud6" path="res://arts/Board.png" id="1_btk43"]
+[ext_resource type="Script" path="res://Scenes/opening_scene.gd" id="1_wnf0s"]
+[ext_resource type="Texture2D" uid="uid://c5eg34vtiedjs" path="res://arts/Blank_Button_Unpressed.png" id="3_mkkv7"]
+
+[node name="Opening Scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wnf0s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_btk43")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 279.0
+offset_right = 1736.0
+offset_bottom = 1323.0
+scale = Vector2(0.5, 0.5)
+
+[node name="One Player" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("3_mkkv7")
+
+[node name="Label" type="Label" parent="Buttons/One Player"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -44.0
+offset_right = 169.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "One Player"
+
+[node name="Two Players" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("3_mkkv7")
+
+[node name="Label" type="Label" parent="Buttons/Two Players"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -44.0
+offset_right = 169.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 128
+text = "Two Players
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.5
+offset_right = 256.5
+offset_bottom = 290.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 212
+text = "Pong!"
+
+[connection signal="pressed" from="Buttons/One Player" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="Buttons/Two Players" to="." method="_on_two_players_pressed"]

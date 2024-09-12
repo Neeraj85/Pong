@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const speed = 300
+const speed = 450
 var direction = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,3 +27,4 @@ func _process(delta):
 	if Input.is_action_pressed("Up"):
 		direction = -1
 	position.y += direction * speed * delta
+	position.y = clamp(position.y, 120, 975)

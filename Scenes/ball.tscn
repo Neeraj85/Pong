@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ylcoydblj8sl"]
+[gd_scene load_steps=5 format=3 uid="uid://ylcoydblj8sl"]
 
 [ext_resource type="Script" path="res://Scenes/ball.gd" id="1_x72rv"]
 [ext_resource type="Texture2D" uid="uid://5qm1dmv4fhvl" path="res://arts/Ball.png" id="2_plkn8"]
+[ext_resource type="AudioStream" uid="uid://cdk2penum3j7i" path="res://fonts/Collision Sound.mp3" id="3_j4r5i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_npmq8"]
 radius = 17.0
 
 [node name="Ball" type="CharacterBody2D"]
 position = Vector2(960, 588)
+floor_stop_on_slope = false
+platform_on_leave = 2
+platform_floor_layers = 4294967040
 script = ExtResource("1_x72rv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,3 +19,6 @@ texture = ExtResource("2_plkn8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_npmq8")
+
+[node name="Collision Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_j4r5i")

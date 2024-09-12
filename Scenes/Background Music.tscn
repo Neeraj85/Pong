@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8qi8ja6fhwns"]
+
+[ext_resource type="AudioStream" uid="uid://cgfof2wyfpqm4" path="res://Music/melodic-techno-03-extended-version-moogify-9867.mp3" id="1_d5n5x"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_d5n5x")
+autoplay = true

@@ -9,6 +9,8 @@ radius = 17.0
 
 [node name="Ball" type="CharacterBody2D"]
 position = Vector2(960, 588)
+motion_mode = 1
+slide_on_ceiling = false
 floor_stop_on_slope = false
 platform_on_leave = 2
 platform_floor_layers = 4294967040

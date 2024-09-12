@@ -123,6 +123,7 @@ text = "Player Two Score:"
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(260, 520)
+motion_mode = 1
 floor_stop_on_slope = false
 platform_on_leave = 2
 platform_floor_layers = 4294967040
@@ -136,6 +137,7 @@ polygon = PackedVector2Array(8.5, -56.6, 8.5, 56, 5.1, 60, -8.5, 60, -8.5, -60, 
 
 [node name="Player Two" type="CharacterBody2D" parent="."]
 position = Vector2(1665, 520)
+motion_mode = 1
 floor_stop_on_slope = false
 platform_on_leave = 2
 platform_floor_layers = 4294967040
